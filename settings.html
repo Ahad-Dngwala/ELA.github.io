@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Ethereal Elegance Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #EBA6A9;
+            --secondary-color: #e6666c;
+            --light-pink: #f8e1e3;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .sidebar {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+
+        .sidebar .nav-link {
+            color: white;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+
+        .sidebar .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+        .settings-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .settings-header {
+            border-bottom: 2px solid var(--light-pink);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-switch .form-check-input {
+            width: 3em;
+            height: 1.5em;
+            margin-left: 0;
+        }
+
+        .form-switch .form-check-input:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-elegant {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+
+        .btn-elegant:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(235, 166, 169, 0.4);
+        }
+
+        .color-picker {
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .backup-progress {
+            height: 10px;
+            border-radius: 5px;
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+        }
+
+        .nav-pills .nav-link {
+            color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 sidebar">
+            <h3 class="mb-4">ELA Admin</h3>
+            <nav class="nav flex-column">
+                <a class="nav-link" href="index.html"><i class="fas fa-tachometer-alt me-2"></i>Home</a>
+                <a class="nav-link active" href="admin.html"><i class="fas fa-home me-2"></i>Dashboard</a>
+                <a class="nav-link" href="order.html"><i class="fas fa-shopping-cart me-2"></i>Orders</a>
+                <a class="nav-link" href="product.html"><i class="fas fa-box me-2"></i>Products</a>
+                <a class="nav-link" href="customers.html"><i class="fas fa-users me-2"></i>Customers</a>
+                <a class="nav-link" href="analytics.html"><i class="fas fa-chart-bar me-2"></i>Analytics</a>
+                <a class="nav-link active" href="#"><i class="fas fa-cog me-2"></i>Settings</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10 main-content p-4">
+            <h2 class="mb-4">Settings</h2>
+
+            <!-- Settings Navigation -->
+            <ul class="nav nav-pills mb-4" id="settingsTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-bs-toggle="pill" href="#general">General</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#appearance">Appearance</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#notifications">Notifications</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#security">Security</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="pill" href="#advanced">Advanced</a>
+                </li>
+            </ul>
+
+            <!-- Settings Content -->
+            <div class="tab-content">
+                <!-- General Settings -->
+                <div class="tab-pane fade show active" id="general">
+                    <div class="settings-card">
+                        <h5 class="settings-header">Store Information</h5>
+                        <form id="storeInfoForm">
+                            <div class="mb-3">
+                                <label class="form-label">Store Name</label>
+                                <input type="text" class="form-control" value="Ethereal Elegance">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Contact Email</label>
+                                <input type="email" class="form-control" value="contact@etherealelegance.com">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Currency</label>
+                                <select class="form-select">
+                                    <option value="INR" selected>Indian Rupee (₹)</option>
+                                    <option value="USD">US Dollar ($)</option>
+                                    <option value="EUR">Euro (€)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Time Zone</label>
+                                <select class="form-select">
+                                    <option value="IST" selected>India Standard Time (IST)</option>
+                                    <option value="UTC">UTC</option>
+                                    <option value="EST">Eastern Time (ET)</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Appearance Settings -->
+                <div class="tab-pane fade" id="appearance">
+                    <div class="settings-card">
+                        <h5 class="settings-header">Theme Customization</h5>
+                        <div class="mb-4">
+                            <label class="form-label">Primary Color</label>
+                            <input type="color" class="color-picker" value="#EBA6A9">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Secondary Color</label>
+                            <input type="color" class="color-picker" value="#e6666c">
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Font Size</label>
+                            <input type="range" class="form-range" min="12" max="20" value="16">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notifications Settings -->
+                <div class="tab-pane fade" id="notifications">
+                    <div class="settings-card">
+                        <h5 class="settings-header">Email Notifications</h5>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">New Order Notifications</label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox" checked>
+                            <label class="form-check-label">Low Stock Alerts</label>
+                        </div>
+                        <div class="form-check form-switch mb-3">
+                            <input class="form-check-input" type="checkbox">
+                            <label class="form-check-label">Customer Reviews</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security Settings -->
+                <div class="tab-pane fade" id="security">
+                    <div class="settings-card">
+                        <h5 class="settings-header">Security Settings</h5>
+                        <div class="mb-3">
+                            <label class="form-label">Two-Factor Authentication</label>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="twoFactorAuth">
+                                <label class="form-check-label">Enable 2FA</label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <button class="btn btn-elegant" onclick="changePassword()">
+                                Change Password
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Advanced Settings -->
+                <div class="tab-pane fade" id="advanced">
+                    <div class="settings-card">
+                        <h5 class="settings-header">System Maintenance</h5>
+                        <div class="mb-4">
+                            <button class="btn btn-elegant mb-3" onclick="backupData()">
+                                Backup Data
+                            </button>
+                            <div class="progress backup-progress d-none">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <button class="btn btn-danger" onclick="clearCache()">
+                                Clear Cache
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Save Changes Button -->
+            <div class="d-flex justify-content-end mt-4">
+                <button class="btn btn-elegant" onclick="saveSettings()">
+                    Save Changes
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Save settings
+function saveSettings() {
+    // Simulate saving
+    const saveBtn = event.target;
+    const originalText = saveBtn.innerHTML;
+    saveBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+    
+    setTimeout(() => {
+        saveBtn.innerHTML = '<i class="fas fa-check"></i> Saved!';
+        setTimeout(() => {
+            saveBtn.innerHTML = originalText;
+        }, 2000);
+    }, 1500);
+}
+
+// Change password
+function changePassword() {
+    const newPassword = prompt('Enter new password:');
+    if (newPassword) {
+        alert('Password updated successfully!');
+    }
+}
+
+// Backup data
+function backupData() {
+    const progressBar = document.querySelector('.backup-progress');
+    const progressBarInner = progressBar.querySelector('.progress-bar');
+    
+    progressBar.classList.remove('d-none');
+    progressBarInner.style.width = '0%';
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += 10;
+        progressBarInner.style.width = `${progress}%`;
+        
+        if (progress >= 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                progressBar.classList.add('d-none');
+                alert('Backup completed successfully!');
+            }, 500);
+        }
+    }, 300);
+}
+
+// Clear cache
+function clearCache() {
+    if (confirm('Are you sure you want to clear the cache?')) {
+        alert('Cache cleared successfully!');
+    }
+}
+
+// Theme customization
+document.querySelectorAll('.color-picker').forEach(picker => {
+    picker.addEventListener('input', function() {
+        const property = this.previousElementSibling.textContent.toLowerCase().includes('primary') 
+            ? '--primary-color' 
+            : '--secondary-color';
+        document.documentElement.style.setProperty(property, this.value);
+    });
+});
+
+// Two-factor authentication
+document.getElementById('twoFactorAuth').addEventListener('change', function() {
+    if (this.checked) {
+        alert('Please scan the QR code with your authenticator app:\n[QR Code would be displayed here]');
+    }
+});
+
+// Initialize tooltips
+document.addEventListener('DOMContentLoaded', function() {
+    const tooltips = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+    tooltips.forEach(tooltip => {
+        new bootstrap.Tooltip(tooltip);
+    });
+});
+</script>
+
+</body>
+</html>
